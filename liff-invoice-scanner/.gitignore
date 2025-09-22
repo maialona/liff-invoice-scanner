@@ -1,0 +1,31 @@
+# Node / Vite
+node_modules/
+dist/
+.cache/
+.vite/
+coverage/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# Env & secrets
+.env
+.env.*
+*.local
+backend-node/keys/
+service-account.json
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Netlify / Vercel
+.netlify/
+.vercel/
+
+# Tests outputs
+junit.xml

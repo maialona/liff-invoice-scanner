@@ -1,0 +1,133 @@
+<!-- liff-frontend/index.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>電子發票掃描器</title>
+    <script
+      charset="utf-8"
+      src="https://static.line-scdn.net/liff/edge/2/sdk.js"
+    ></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+          sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #fff;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .title {
+        font-size: 24px;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+      .scan-btn {
+        background: #00c300;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 16px 32px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        max-width: 280px;
+        box-shadow: 0 4px 12px rgba(0, 195, 0, 0.3);
+        transition: all 0.2s;
+      }
+      .scan-btn:hover {
+        background: #00a300;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 195, 0, 0.4);
+      }
+      .scan-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .result-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: left;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .result-item {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .result-label {
+        font-weight: 600;
+        color: #e0e7ff;
+      }
+      .result-value {
+        color: #fff;
+      }
+      .success-msg {
+        background: #10b981;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-top: 16px;
+        font-weight: 500;
+      }
+      .error-msg {
+        background: #ef4444;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-top: 16px;
+        font-weight: 500;
+      }
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .dual-qr-hint {
+        background: rgba(255, 193, 7, 0.2);
+        border: 1px solid rgba(255, 193, 7, 0.5);
+        color: #ffc107;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 16px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">📱 電子發票掃描器</div>
+      <button id="scanBtn" class="scan-btn">📷 掃描發票 QR Code</button>
+      <div id="dualQrHint" class="dual-qr-hint" style="display: none">
+        偵測到第一碼，請再掃描右側 QR 碼取得完整明細
+      </div>
+      <div id="resultCard" class="result-card" style="display: none">
+        <div id="resultContent"></div>
+      </div>
+      <div id="successMsg" class="success-msg" style="display: none"></div>
+      <div id="errorMsg" class="error-msg" style="display: none"></div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
