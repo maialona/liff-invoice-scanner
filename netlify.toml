@@ -1,0 +1,18 @@
+# netlify.toml 放在「GitHub 專案根目錄」
+
+[build]
+  # 這裡指定 Netlify 先 cd 到哪個資料夾再執行 command
+  base    = "liff-invoice-scanner/liff-frontend"
+  # 這是「相對於 base」的輸出資料夾
+  publish = "dist"
+  # 你在 liff-frontend 內本來就會跑的指令
+  command = "npm ci && npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# 單頁應用（SPA）建議加這個，之後有子路由才不會 404
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
